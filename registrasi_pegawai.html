@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Form Registrasi Pegawai</title>
+  </head>
+  <body>
+    <div class="container">
+      <form action="process.php" method="post">
+        <h2>Form Registrasi Pegawai</h2>
+        <label for="nama">Nama Pegawai:</label>
+        <input type="text" id="nama" name="nama" required />
+
+        <label for="agama">Agama:</label>
+        <input type="text" id="agama" name="agama" required />
+
+        <label for="jabatan">Jabatan:</label>
+        <select id="jabatan" name="jabatan" required>
+          <option value="manager">Manager</option>
+          <option value="asisten">Asisten</option>
+          <option value="kabag">Kabag</option>
+          <option value="staff">Staff</option>
+        </select>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" onchange="toggleJumlahAnak()">
+          <option value="menikah">Menikah</option>
+          <option value="belum_menikah">Belum Menikah</option>
+        </select>
+
+        <div id="jumlahAnakContainer" style="display: none">
+          <label for="jumlahAnak">Jumlah Anak:</label>
+          <input type="number" id="jumlahAnak" name="jumlahAnak" />
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+
+    <script>
+      function toggleJumlahAnak() {
+        var statusDropdown = document.getElementById("status");
+        var jumlahAnakContainer = document.getElementById(
+          "jumlahAnakContainer"
+        );
+
+        if (statusDropdown.value === "menikah") {
+          jumlahAnakContainer.style.display = "block";
+        } else {
+          jumlahAnakContainer.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
